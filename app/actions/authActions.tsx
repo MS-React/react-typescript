@@ -1,7 +1,8 @@
+import { Dispatch } from 'redux';
 import { push } from 'react-router-redux';
 import * as authService from '../services/authService';
 
-import { AUTH } from '../actions/actionTypes';
+import { AUTH } from './actionTypes';
 
 export function loginRequest() {
   return {
@@ -9,22 +10,22 @@ export function loginRequest() {
   };
 }
 
-export function loginSuccess(user) {
+export function loginSuccess(user: any) {
   return {
     type: AUTH.LOGIN_SUCCESS,
     user
   };
 }
 
-export function loginFailed(error) {
+export function loginFailed(error: any) {
   return {
     type: AUTH.LOGIN_FAILED,
     message: error
   };
 }
 
-export function login(payload) {
-  return function (dispatch) {
+export function login(payload: any) {
+  return function (dispatch: Dispatch<any>) {
     dispatch(loginRequest());
     return authService.login(payload)
       .then(

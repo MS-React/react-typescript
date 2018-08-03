@@ -10,7 +10,7 @@ import './LoginPage.scss';
 
 export class LoginPage extends React.Component<LoginPageInterface, {}> {
 
-  handleOnSubmit = (username, password) => {
+  handleOnSubmit = (username: string, password: string) => {
     this.props.actions.login({username, password});
   }
 
@@ -26,11 +26,11 @@ export class LoginPage extends React.Component<LoginPageInterface, {}> {
 }
 
 
-export function mapStateToProps(state) {
+export function mapStateToProps(state: any) {
   return { ...state.auth };
 }
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch: any) {
   return { actions: bindActionCreators(authActions, dispatch) };
 }
 

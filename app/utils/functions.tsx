@@ -1,8 +1,8 @@
 
 // This is an assign function that copies full descriptors
-export function completeAssign(target, ...sources) {
+export function completeAssign(target:any, sources: Array<any>) {
   sources.forEach(source => {
-    let descriptors = Object.keys(source).reduce((descriptors, key) => {
+    let descriptors = Object.keys(source).reduce((descriptors: any, key: string) => {
       descriptors[key] = Object.getOwnPropertyDescriptor(source, key);
       return descriptors;
     }, {});
@@ -18,7 +18,7 @@ export function completeAssign(target, ...sources) {
   return target;
 }
 
-export function omit(entity, property) {
+export function omit(entity: any, property: any) {
   let newEntity = completeAssign({}, entity);
   delete newEntity[property];
   return newEntity;

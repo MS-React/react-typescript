@@ -9,6 +9,7 @@
   "author": "Making Sense",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash.get": "^4.4.4",
     "@types/prop-types": "^15.5.4",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",

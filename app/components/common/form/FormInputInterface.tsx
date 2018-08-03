@@ -8,7 +8,7 @@ export interface FormInputInterface {
   onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void);
   label: string;
   inputId: string;
-  invalid: boolean;
-  required: boolean;
+  invalid?: boolean;
+  required?: boolean;
   feedback: string;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FormInput from '../../common/form/FormInput';
 import { LoginFormInterface } from './LoginFormInterface';
 
@@ -31,6 +30,7 @@ class LoginForm extends React.Component<LoginFormInterface, {}> {
         <FormInput
           inputId="inputEmail"
           label="Username or email address"
+          type="text"
           onChange={this.handleOnChange}
           name="username"
           placeholder="Username or email address"
