@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { FormInputInterface } from './FormInputInterface';
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 

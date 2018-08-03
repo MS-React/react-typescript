@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import LoginForm from './LoginForm';
 import * as authActions from '../../../actions/authActions';
 import { connect } from 'react-redux';
@@ -24,7 +23,6 @@ export class LoginPage extends React.Component<LoginPageInterface, {}> {
     );
   }
 }
-
 
 export function mapStateToProps(state: any) {
   return { ...state.auth };

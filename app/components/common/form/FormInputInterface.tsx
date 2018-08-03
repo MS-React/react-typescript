@@ -10,5 +10,5 @@ export interface FormInputInterface {
   inputId: string;
   invalid?: boolean;
   required?: boolean;
-  feedback: string;
+  feedback?: string;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import * as actions from '../actions/authActions';
 import LoginPage from './pages/login/LoginPage';
 import NotFoundPage from './pages/not_found/NotFoundPage';
@@ -17,8 +17,8 @@ export class Main extends React.Component<MainInterface, {}> {
     return (
       <div>
         <Switch>
+          <Route exact path="/login" component={LoginPage} />
           <Route component={NotFoundPage} />
-          <Route path="/login" component={LoginPage} />
         </Switch>
       </div>
     );

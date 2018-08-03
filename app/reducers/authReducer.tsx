@@ -3,9 +3,7 @@ import { AUTH } from '../actions/actionTypes';
 export const initialState = {
   authenticating: false,
   isAuthenticated: false,
-  error: false,
-  errorMessage: null,
-  user: null
+  error: false
 };
 
 export default function authReducer(state = initialState, action: any) {

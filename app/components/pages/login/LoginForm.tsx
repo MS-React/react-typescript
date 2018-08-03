@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import FormInput from '../../common/form/FormInput';
 import { LoginFormInterface } from './LoginFormInterface';
 

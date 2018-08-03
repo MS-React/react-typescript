@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Main from './Main';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
