@@ -2,13 +2,19 @@ const buildLogFolder = 'buildlog';
 
 module.exports = {
   testURL: 'http://localhost/',
-  transform: {
-    '.*\.tsx?$': 'ts-jest'
-  },
   setupFiles: [
-    './enzyme.tsx'
+    '<rootDir>/test-shim.js',
+    '<rootDir>/test-setup.js'
   ],
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js'
+  ],
+  transform: {
+    "^.+\\.(ts|tsx)$": "<rootDir>/test-preprocessor.js"
+  },
+  testRegex: "(app\/(.*)(spec|test).(tsx|ts))$",
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/style-mock.js'
