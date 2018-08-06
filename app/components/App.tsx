@@ -1,10 +1,10 @@
 import * as React from 'react';
+import AppProps from './AppProps';
 import Main from './Main';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import { AppInterface } from './AppInterface';
 
-export default class App extends React.Component<AppInterface, {}> {
+export default class App extends React.Component<AppProps, {}> {
 
   render() {
     const { store, history } = this.props;

@@ -1,10 +1,10 @@
 import * as React from 'react';
+import LoginFormProps from './LoginFormProps';
 import FormInput from '../../common/form/FormInput';
-import { LoginFormInterface } from './LoginFormInterface';
 
 import './LoginForm.scss';
 
-class LoginForm extends React.Component<LoginFormInterface, {}> {
+class LoginForm extends React.Component<LoginFormProps, {}> {
 
   state = {
     username: '',

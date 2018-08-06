@@ -1,6 +1,6 @@
 import { Auth } from '../../../models';
 
-export interface LoginPageInterface {
+export default interface LoginPageProps {
   auth: Auth;
   actions: any;
 };
