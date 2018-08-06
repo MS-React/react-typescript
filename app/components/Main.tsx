@@ -5,6 +5,7 @@ import NotFoundPage from './pages/not_found/NotFoundPage';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import { StoreState } from '../models'
 import { MainInterface } from './MainInterface';
 
 export class Main extends React.Component<MainInterface, {}> {
@@ -25,7 +26,7 @@ export class Main extends React.Component<MainInterface, {}> {
   }
 }
 
-export function mapStateToProps(state: any) {
+export function mapStateToProps(state: StoreState) {
   return { isAuthenticated: state.auth.isAuthenticated };
 }
 

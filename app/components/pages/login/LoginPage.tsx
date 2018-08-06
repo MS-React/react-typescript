@@ -4,6 +4,7 @@ import * as authActions from '../../../actions/authActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { LoginPageInterface } from './LoginPageInterface';
+import { StoreState } from '../../../models';
 
 import './LoginPage.scss';
 
@@ -24,8 +25,8 @@ export class LoginPage extends React.Component<LoginPageInterface, {}> {
   }
 }
 
-export function mapStateToProps(state: any) {
-  return { ...state.auth };
+export function mapStateToProps(state: StoreState) {
+  return { auth: state.auth };
 }
 
 export function mapDispatchToProps(dispatch: any) {

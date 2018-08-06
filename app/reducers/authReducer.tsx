@@ -1,32 +1,32 @@
-import { AUTH } from '../actions/actionTypes';
+import { Auth } from '../models/auth';
+import { AUTH as actionTypes } from '../actions/actionTypes';
 
-export const initialState = {
+export const createAuthInstance = () : Auth => ({
   authenticating: false,
   isAuthenticated: false,
-  error: false
-};
+  error: false,
+  errorMessage: null,
+  user: null
+});
 
-export default function authReducer(state = initialState, action: any) {
+export default function authReducer(state = createAuthInstance(), action: any) {
   switch (action.type) {
-    case AUTH.LOGIN_BEGIN:
+    case actionTypes.LOGIN_BEGIN:
       return {
         ...state,
-        ...initialState,
         authenticating: true
       };
 
-    case AUTH.LOGIN_SUCCESS:
+    case actionTypes.LOGIN_SUCCESS:
       return {
         ...state,
-        ...initialState,
         isAuthenticated: true,
         user: action.user
       };
 
-    case AUTH.LOGIN_FAILED:
+    case actionTypes.LOGIN_FAILED:
       return {
         ...state,
-        ...initialState,
         error: true,
         errorMessage: action.message
       };
