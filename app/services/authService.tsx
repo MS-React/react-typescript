@@ -15,9 +15,11 @@ export function login({ username = '', password = ''}) {
     });
   }
   else {
-    const message = 'Invalid credentials.';
     return new Promise(function (resolve, reject) {
-      setTimeout(reject, Math.random() * 200, message);
+      setTimeout(reject, Math.random() * 200, {
+        code: 400,
+        message: 'Invalid credentials.'
+      });
     });
   }
 }

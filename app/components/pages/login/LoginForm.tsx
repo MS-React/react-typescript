@@ -1,6 +1,7 @@
 import * as React from 'react';
 import LoginFormProps from './LoginFormProps';
 import FormInput from '../../common/form/FormInput';
+import { Alert } from 'reactstrap';
 
 import './LoginForm.scss';
 
@@ -21,6 +22,17 @@ class LoginForm extends React.Component<LoginFormProps, {}> {
     event.preventDefault();
 
     this.props.onSubmit(this.state.username, this.state.password);
+  }
+
+  renderError = () => {
+    const { error } = this.props;
+    let dataToRender = null;
+
+    if (error) {
+      dataToRender = (<Alert color="danger">{error.message}</Alert>);
+    }
+
+    return dataToRender;
   }
 
   render() {
@@ -44,6 +56,7 @@ class LoginForm extends React.Component<LoginFormProps, {}> {
           placeholder="Password"
           value={this.state.password} />
         <span>Hint: <i>username/password</i></span>
+        {this.renderError()}
         <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
     );

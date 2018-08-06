@@ -1,4 +1,4 @@
-import { AuthData, User } from '../models';
+import { AuthData, User, Error } from '../models';
 import { Dispatch } from 'redux';
 import { push } from 'react-router-redux';
 import * as authService from '../services/authService';
@@ -18,10 +18,10 @@ export function loginSuccess(user: User) {
   };
 }
 
-export function loginFailed(error: string) {
+export function loginFailed(error: Error) {
   return {
     type: actionTypes.LOGIN_FAILED,
-    message: error
+    error
   };
 }
 
@@ -34,7 +34,7 @@ export function login(payload: AuthData) {
           dispatch(loginSuccess(response));
           dispatch(push('/'));
         },
-        (error: string) => dispatch(loginFailed(error))
+        (error: Error) => dispatch(loginFailed(error))
       );
   };
 }
