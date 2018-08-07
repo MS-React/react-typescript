@@ -1,23 +1,40 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { Main, mapDispatchToProps, mapStateToProps } from './Main';
-import { StoreState } from '../models';
+import { LoginPage, mapDispatchToProps, mapStateToProps } from './LoginPage';
+import { StoreState } from '../../../models';
 
 function setup(props: any) {
-  return shallow(<Main {...props} />);
+  return shallow(<LoginPage {...props} />);
 }
 
-describe('<Main /> component', () => {
+describe('<LoginPage /> component', () => {
   it('renders itself', () => {
-    // Arrange
     const wrapper = setup({
       actions: {},
-      usersActions: {}
+      auth: {
+        error: null
+      }
     });
 
-    // Assert
-    expect(wrapper.find('Switch')).toHaveLength(1);
-    expect(wrapper.find('Route')).toHaveLength(2);
+    expect(wrapper.find('section')).toHaveLength(1);  
+    expect(wrapper.find('LoginForm')).toHaveLength(1);
+  });
+
+  it('should handle form submit itself', () => {
+    const login = jest.fn();
+    const wrapper = setup({
+      actions: {
+        login
+      },
+      auth: {
+        error: null
+      }
+    });
+    const form = wrapper.find('LoginForm');
+
+    form.simulate('submit');
+
+    expect(login).toHaveBeenCalledTimes(1);
   });
 
   describe('mapStateToProps functions', () => {
@@ -31,27 +48,23 @@ describe('<Main /> component', () => {
         }
       } as StoreState;
 
-      // Act
-      const props = mapStateToProps(state);
+      const props = mapStateToProps(Object.assign({}, state));
 
-      // Assert
-      expect(props.isAuthenticated).toBe(false);
+      expect(props).toEqual(state);
     });
   });
 
   describe('mapDispatchToProps functions', () => {
     it('actions prop should be defined', () => {
-      // Arrange
+
       const dispatch = () => {};
-      // Act
+
       const props = mapDispatchToProps(dispatch);
 
-      // Assert
       expect(props.actions).toBeDefined();
     });
 
     it('should return the binded actions', () => {
-      // Arrange
       const dispatch = () => {};
       const expectedActions = [
         'loginRequest',
@@ -60,10 +73,8 @@ describe('<Main /> component', () => {
         'login'
       ];
 
-      // Act
       const props = mapDispatchToProps(dispatch);
 
-      // Assert
       expect(Object.keys(props.actions)).toEqual(expectedActions);
     });
   });
