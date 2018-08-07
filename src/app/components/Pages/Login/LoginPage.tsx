@@ -1,18 +1,22 @@
 import * as React from 'react';
-import LoginPageProps from './props';
 import LoginForm from './Form/LoginForm';
-import * as authActions from '../../../actions/authActions';
+import * as authActions from 'rootApp/actions/authActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { StoreState } from '../../../models';
+import { StoreState, Auth } from 'rootApp/models';
 
 import './LoginPage.scss';
+
+interface LoginPageProps {
+  auth: Auth;
+  actions: any;
+};
 
 export class LoginPage extends React.Component<LoginPageProps, {}> {
 
   handleOnSubmit = (username: string, password: string) => {
     this.props.actions.login({
-      username, 
+      username,
       password
     });
   }

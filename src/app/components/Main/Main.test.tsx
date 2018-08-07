@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 import { Main, mapDispatchToProps, mapStateToProps } from './Main';
-import { StoreState } from '../models';
+import { StoreState } from 'rootApp/models';
 
 function setup(props: any) {
   return shallow(<Main {...props} />);
@@ -42,7 +42,7 @@ describe('<Main /> component', () => {
   describe('mapDispatchToProps functions', () => {
     it('actions prop should be defined', () => {
       // Arrange
-      const dispatch = () => {};
+      const dispatch = () => { };
       // Act
       const props = mapDispatchToProps(dispatch);
 
@@ -52,7 +52,7 @@ describe('<Main /> component', () => {
 
     it('should return the binded actions', () => {
       // Arrange
-      const dispatch = () => {};
+      const dispatch = () => { };
       const expectedActions = [
         'loginRequest',
         'loginSuccess',

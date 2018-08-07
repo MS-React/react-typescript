@@ -1,13 +1,17 @@
 import * as React from 'react';
 import * as actions from '../../actions/authActions';
-import MainProps from './props';
 import LoginPage from '../Pages/Login';
-import DashboardPage from '../Pages/Dashboard';
 import NotFoundPage from '../Pages/NotFound';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { StoreState } from 'rootApp/models';
+
+interface MainProps {
+  actions: any,
+  isAuthenticated: boolean,
+  usersActions: any
+};
 
 export class Main extends React.Component<MainProps, {}> {
   static defaultProps = {
@@ -19,7 +23,6 @@ export class Main extends React.Component<MainProps, {}> {
       <main className="app-container">
         <Switch>
           <Route exact path="/login" component={LoginPage} />
-          <Route path="/dashboard" component={DashboardPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </main>
