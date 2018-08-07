@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as actions from '../actions/authActions';
+import MainProps from './MainProps';
 import LoginPage from './pages/login/LoginPage';
 import NotFoundPage from './pages/not_found/NotFoundPage';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { MainInterface } from './MainInterface';
+import { StoreState } from '../models'
 
-export class Main extends React.Component<MainInterface, {}> {
+export class Main extends React.Component<MainProps, {}> {
 
   static defaultProps = {
     isAuthenticated: false
@@ -25,7 +26,7 @@ export class Main extends React.Component<MainInterface, {}> {
   }
 }
 
-export function mapStateToProps(state: any) {
+export function mapStateToProps(state: StoreState) {
   return { isAuthenticated: state.auth.isAuthenticated };
 }
 

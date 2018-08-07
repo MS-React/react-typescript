@@ -1,8 +1,6 @@
-import { initialState as auth } from './authReducer';
+import { createAuthInstance } from './authReducer';
 
 export default {
-  auth: {
-    ...auth
-  },
+  auth: createAuthInstance,
   routing: null
 };
