@@ -25,8 +25,8 @@ describe('<Main /> component', () => {
       const state = {
         auth: {
           authenticating: false,
-          isAuthenticated: false,
           error: null,
+          isAuthenticated: false,
           user: null
         }
       } as StoreState;

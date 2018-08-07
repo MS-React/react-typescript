@@ -25,7 +25,9 @@ export class LoginPage extends React.Component<LoginPageProps, {}> {
     return (
       <section className="login-page">
         <div className="login-page--form">
-          <LoginForm error={this.props.auth.error} onSubmit={this.handleOnSubmit} />
+          <LoginForm 
+            error={this.props.auth.error} 
+            onSubmit={this.handleOnSubmit} />
         </div>
       </section>
     );

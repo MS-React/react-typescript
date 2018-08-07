@@ -1,6 +1,5 @@
-
 // This is an assign function that copies full descriptors
-export function completeAssign(target:any, sources: Array<any>) {
+export function completeAssign(target: any, sources: Array<any>) {
   sources.forEach(source => {
     let descriptors = Object.keys(source).reduce((descriptors: any, key: string) => {
       descriptors[key] = Object.getOwnPropertyDescriptor(source, key);

@@ -14,7 +14,7 @@ module.exports = {
   transform: {
     "^.+\\.(ts|tsx)$": "<rootDir>/test/preprocessor.js"
   },
-  testRegex: "(app\/(.*)(spec|test).(tsx|ts))$",
+  testRegex: '(app\/(.*)(spec|test).(tsx|ts))$',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
     '\\.(css|less|scss)$': '<rootDir>/test/__mocks__/styles.js',

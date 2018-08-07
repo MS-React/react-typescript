@@ -1,4 +1,4 @@
 export interface Error {
-  code: string;
-  message: boolean;
+  code: number;
+  message: string;
 };
