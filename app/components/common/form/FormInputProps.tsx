@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface FormInputInterface {
+export default interface FormInputProps {
   type: any;
   name: string;
   placeholder: string;

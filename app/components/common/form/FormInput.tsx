@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { FormInputInterface } from './FormInputInterface';
+import FormInputProps from './FormInputProps';
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
-export default class FormInput extends React.PureComponent<FormInputInterface, {}> {
+export default class FormInput extends React.PureComponent<FormInputProps, {}> {
 
   static defaultProps = {
     required: false,
     invalid: false
   };
 
-  render(){
+  render() {
     const {
       type,
       name,
