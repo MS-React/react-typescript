@@ -9,7 +9,12 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({ template: './src/static/index.html' })
+    new HtmlWebpackPlugin({ template: './src/static/index.html' }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
 
   output: {

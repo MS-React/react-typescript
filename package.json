@@ -4,9 +4,11 @@
   "description": "react with typescript",
   "main": "app/index.tsx",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "test": "jest --coverage",
-    "test:dev": "jest --watch --coverage"
+    "start": "start:dev",
+    "start:dev": "cross-env NODE_ENV=dev webpack-dev-server --open --config webpack.dev.js",
+    "start:local": "cross-env NODE_ENV=local webpack-dev-server --open --config webpack.dev.js",
+    "test": "cross-env NODE_ENV=test && jest --coverage",
+    "test:dev": "cross-env NODE_ENV=test && jest --watch --coverage"
   },
   "author": "Making Sense",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
+    "cross-env": "^5.2.0",
     "history": "4.7.2",
     "lodash.get": "^4.4.2",
     "react": "^16.4.2",

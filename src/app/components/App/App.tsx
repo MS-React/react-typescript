@@ -8,7 +8,6 @@ interface AppProps {
   history: any;
 };
 
-
 const App = (props: AppProps) => (
   <Provider store={props.store}>
     <ConnectedRouter history={props.history}>
