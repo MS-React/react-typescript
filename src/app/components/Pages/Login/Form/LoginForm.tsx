@@ -1,9 +1,14 @@
 import * as React from 'react';
-import LoginFormProps from './LoginFormProps';
-import FormInput from '../../common/form/FormInput';
+import FormInput from 'rootApp/components/Form/Input/FormInput';
 import { Alert } from 'reactstrap';
+import { Error } from 'rootApp/models';
 
 import './LoginForm.scss';
+
+interface LoginFormProps {
+  error: Error,
+  onSubmit: ((username: string, password: string) => void);
+};
 
 class LoginForm extends React.Component<LoginFormProps, {}> {
 

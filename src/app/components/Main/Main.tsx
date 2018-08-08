@@ -1,27 +1,31 @@
 import * as React from 'react';
-import * as actions from '../actions/authActions';
-import MainProps from './MainProps';
-import LoginPage from './pages/login/LoginPage';
-import NotFoundPage from './pages/not_found/NotFoundPage';
+import * as actions from '../../actions/authActions';
+import LoginPage from '../Pages/Login';
+import NotFoundPage from '../Pages/NotFound';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { StoreState } from '../models'
+import { StoreState } from 'rootApp/models';
+
+interface MainProps {
+  actions: any,
+  isAuthenticated: boolean,
+  usersActions: any
+};
 
 export class Main extends React.Component<MainProps, {}> {
-
   static defaultProps = {
     isAuthenticated: false
   };
 
   render() {
     return (
-      <div>
+      <main className="app-container">
         <Switch>
           <Route exact path="/login" component={LoginPage} />
           <Route component={NotFoundPage} />
         </Switch>
-      </div>
+      </main>
     );
   }
 }

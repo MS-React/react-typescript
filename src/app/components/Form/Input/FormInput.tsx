@@ -1,9 +1,20 @@
 import * as React from 'react';
-import FormInputProps from './FormInputProps';
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
-export default class FormInput extends React.PureComponent<FormInputProps, {}> {
+interface FormInputProps {
+  type: any;
+  name: string;
+  placeholder: string;
+  value: any;
+  onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void);
+  label: string;
+  inputId: string;
+  invalid?: boolean;
+  required?: boolean;
+  feedback?: string;
+}
 
+export default class FormInput extends React.PureComponent<FormInputProps, {}> {
   static defaultProps = {
     required: false,
     invalid: false
