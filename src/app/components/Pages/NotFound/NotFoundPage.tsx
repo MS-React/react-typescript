@@ -10,5 +10,5 @@ export default class NotFoundPage extends React.PureComponent<{}, {}> {
         <Link to="/">Go back to home</Link>
       </section>
     );
-  };
-};
+  }
+}

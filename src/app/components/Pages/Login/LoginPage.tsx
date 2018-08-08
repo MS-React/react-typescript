@@ -10,7 +10,7 @@ import './LoginPage.scss';
 interface LoginPageProps {
   auth: Auth;
   actions: any;
-};
+}
 
 export class LoginPage extends React.Component<LoginPageProps, {}> {
 

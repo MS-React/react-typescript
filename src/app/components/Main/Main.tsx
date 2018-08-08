@@ -8,10 +8,10 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { StoreState } from 'rootApp/models';
 
 interface MainProps {
-  actions: any,
-  isAuthenticated: boolean,
-  usersActions: any
-};
+  actions: any;
+  isAuthenticated: boolean;
+  usersActions: any;
+}
 
 export class Main extends React.Component<MainProps, {}> {
   static defaultProps = {

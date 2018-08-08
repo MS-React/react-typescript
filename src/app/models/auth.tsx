@@ -6,4 +6,4 @@ export interface Auth {
   isAuthenticated: boolean;
   error: Error;
   user: User;
-};
+}

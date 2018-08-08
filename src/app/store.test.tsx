@@ -50,7 +50,7 @@ describe('Store', () => {
       routing: {
         location: null
       }
-    } as any;;
+    } as any;
     
     expect(store.getState()).toEqual(expectedState);
   });
