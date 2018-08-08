@@ -1,4 +1,5 @@
 import { apiService } from './ApiService';
+import settings from '../../config/settings';
 
 describe('ApiService', () => {
   describe('create', () => {
@@ -12,7 +13,7 @@ describe('ApiService', () => {
       });
     });
 
-    it('should call POST verb from axios api', async () => {
+    it('should call POST verb from axios api', () => {
       expect(apiService.http.post).toHaveBeenCalledWith('/user', {
         data: {
           name: 'John',
@@ -34,7 +35,7 @@ describe('ApiService', () => {
       });
     });
 
-    it('should call PUT verb from axios api', async () => {
+    it('should call PUT verb from axios api', () => {
       expect(apiService.http.put).toHaveBeenCalledWith('/user', {
         data: {
           name: 'John',
@@ -55,7 +56,7 @@ describe('ApiService', () => {
       });
     });
 
-    it('should call GET verb from axios api', async () => {
+    it('should call GET verb from axios api', () => {
       expect(apiService.http.get).toHaveBeenCalledWith('/user', {
         params: {
           id: 'user-id-1'
@@ -72,12 +73,18 @@ describe('ApiService', () => {
       });
     });
 
-    it('should call DELETE verb from axios api', async () => {
+    it('should call DELETE verb from axios api', () => {
       expect(apiService.http.delete).toHaveBeenCalledWith('/user', {
         params: {
           id: 'user-id-1'
         }
       });
+    });
+  });
+
+  describe('http', () => {
+    it('should have a baseURL property with the expected value regarding the environment', () => {
+      expect(apiService.http.baseURL).toEqual(settings.SERVICE.BASE_URL);
     });
   });
 });
