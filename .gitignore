@@ -1,6 +1,7 @@
 .vscode/settings.json
 /buildlog/
 /coverage/
+/dist/
 /node_modules/
 package-lock.json
 yarn-lock.json
