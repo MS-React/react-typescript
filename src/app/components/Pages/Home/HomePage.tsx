@@ -48,7 +48,7 @@ export class HomePage extends React.Component<HomePageProps, HomePageState> {
       case 'delete':
         return usersActions.deleteUser(user);
       default:
-        //errorService.logErrors('Invalid User action Type', 'HomePage.jsx');
+        errorService.logErrors('Invalid User action Type', 'HomePage.jsx');
     }
   }
 

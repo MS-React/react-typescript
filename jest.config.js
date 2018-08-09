@@ -21,7 +21,7 @@ module.exports = {
     '^rootApp/(.*)': '<rootDir>/src/app/$1'
   },
   collectCoverageFrom: [
-    '**/app/**/*.{ts,tsx}',
+    'src/**/app/**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
     '!**/app/index.tsx'

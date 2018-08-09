@@ -20,7 +20,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      'rootApp': path.resolve(__dirname, 'src/app/')
+      'rootApp': path.resolve(__dirname, 'src/app/'),
+      'errorService': path.resolve(__dirname, 'src/app/utils/errorService')
     }
   },
 

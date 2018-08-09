@@ -118,6 +118,6 @@ export function getUsers(queryParams = DEFAULT_PAGINATION_QUERY) {
 }
 
 function handleErrors(error: any, dispatch: any) {
-  //errorService.logErrors('action failed', 'userActions.js');
+  errorService.logErrors('action failed', 'userActions.js');
   dispatch(loadingUsersFailed(error));
 }
