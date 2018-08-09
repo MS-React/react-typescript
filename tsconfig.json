@@ -16,8 +16,8 @@
     }
   },
   "include": [
-    "./app/**/*",
-    "./__mocks__/**/*"
+    "./src/app/**/*",
+    "./test/__mocks__/**/*"
   ],
   "exclude": [
     "node_modules",
