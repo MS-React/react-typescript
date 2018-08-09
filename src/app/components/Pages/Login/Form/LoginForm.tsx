@@ -6,9 +6,9 @@ import { Error } from 'rootApp/models';
 import './LoginForm.scss';
 
 interface LoginFormProps {
-  error: Error,
+  error: Error;
   onSubmit: ((username: string, password: string) => void);
-};
+}
 
 class LoginForm extends React.Component<LoginFormProps, {}> {
 

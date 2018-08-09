@@ -5,4 +5,4 @@ export interface Users {
   data: Array<User>;
   fetch: Fetch;
   selectedUser: object;
-};
+}
