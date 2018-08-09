@@ -1,4 +1,4 @@
-import Logger from 'js-logger';
+import * as Logger from 'js-logger';
 
 Logger.useDefaults();
 
@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 // Log unhandled errors
 window.onerror = logErrors;
 
-export function logErrors(message, file, line = 'N/A', col = 'N/A') {
+export function logErrors(message: any, file: any, line = 'N/A' as any, col = 'N/A' as any) {
   Logger.error(`An Error Occurred!!: message[${message}], file[${file}], line[${line}], col[${col}]`);
   return false;
 }
