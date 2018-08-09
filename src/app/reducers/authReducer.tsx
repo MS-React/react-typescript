@@ -1,4 +1,4 @@
-import { Auth } from '../models/auth';
+import { Auth } from 'rootApp/models/auth';
 import { AUTH as actionTypes } from '../actions/actionTypes';
 
 export const createAuthInstance = () : Auth => ({

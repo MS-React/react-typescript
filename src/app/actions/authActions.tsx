@@ -1,9 +1,9 @@
-import { AuthData, User, Error } from '../models';
+import { AuthData, User, Error } from 'rootApp/models';
 import { Dispatch } from 'redux';
 import { push } from 'react-router-redux';
-import * as authService from '../services/authService';
+import * as authService from 'rootApp/services/authService';
 
-import { AUTH as actionTypes } from './actionTypes';
+import { AUTH as actionTypes } from 'rootApp/actions/actionTypes';
 
 export function loginRequest() {
   return {
