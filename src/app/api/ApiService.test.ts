@@ -1,5 +1,6 @@
 import { apiService } from './ApiService';
 import settings from '../../config/settings';
+import { AxiosInstance } from 'axios';
 
 describe('ApiService', () => {
   describe('create', () => {
@@ -10,7 +11,7 @@ describe('ApiService', () => {
           name: 'John',
           lastname: 'Doe'
         }
-      });
+      } as any);
     });
 
     it('should call POST verb from axios api', () => {
@@ -19,7 +20,7 @@ describe('ApiService', () => {
           name: 'John',
           lastname: 'Doe'
         }
-      });
+      } as any);
     });
   });
 
@@ -32,7 +33,7 @@ describe('ApiService', () => {
           name: 'John',
           lastname: 'UpdateDoe'
         }
-      });
+      } as any);
     });
 
     it('should call PUT verb from axios api', () => {
@@ -53,7 +54,7 @@ describe('ApiService', () => {
       await apiService.read({
         entity: 'user',
         id: 'user-id-1'
-      });
+      } as any);
     });
 
     it('should call GET verb from axios api', () => {
@@ -61,7 +62,7 @@ describe('ApiService', () => {
         params: {
           id: 'user-id-1'
         }
-      });
+      } as any);
     });
   });
 
@@ -84,7 +85,8 @@ describe('ApiService', () => {
 
   describe('http', () => {
     it('should have a baseURL property with the expected value regarding the environment', () => {
-      expect(apiService.http.baseURL).toEqual(settings.SERVICE.BASE_URL);
+      const http = apiService.http as any;
+      expect(http.baseURL).toEqual(settings.SERVICE.BASE_URL);
     });
   });
 });

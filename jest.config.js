@@ -24,7 +24,7 @@ module.exports = {
     'src/**/app/**/*.{ts,tsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
-    '!**/app/index.tsx'
+    '!**/app/**/index.tsx'
   ],
   coverageDirectory: `${buildLogFolder}/coverage`,
   reporters: [

@@ -14,6 +14,6 @@ const environmentSettings = {
       BASE_URL: "https://ms-labs-be.herokuapp.com/service"
     }
   },
-};
+} as any;
 
 export default environmentSettings[process.env.NODE_ENV];

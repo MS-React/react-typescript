@@ -2,14 +2,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import NotFoundPage from './NotFoundPage';
 
-function setup(props: any) {
+function setup(props?: any) {
   return shallow(<NotFoundPage {...props} />);
 }
 
 describe('<NotFoundPage /> component', () => {
   it('renders itself', () => {
     // Arrange Act
-    const wrapper = setup({});
+    const wrapper = setup();
     const subtitle = wrapper.find('h2');
     const goBackHome = wrapper.find('Link');
     expect(wrapper.find('section')).toHaveLength(1);

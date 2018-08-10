@@ -42,15 +42,16 @@ export class ActionButtons extends React.Component<ActionButtonsProps, ActionBut
 
     this.state = {
       actionType: null,
-      user: {
-        ...emptyUser, 
-        ...props.user},
+      errors: {} as UserFormErrors,
       isUserModalOpen: false,
       modalTitle: '',
       modalBody: {},
       modalYesLabel: '',
-      errors: {} as UserFormErrors
-    } as any;
+      user: {
+        ...emptyUser, 
+        ...props.user
+      } as any
+    };
   }
 
   componentWillReceiveProps({ user: newUser }: any) {
@@ -66,7 +67,7 @@ export class ActionButtons extends React.Component<ActionButtonsProps, ActionBut
   }
 
   isUserMatchById = (sourceUser = {} as any, targetUser = {} as any) => {
-    return sourceUser['id'] === targetUser['id'];
+    return sourceUser['_id'] === targetUser['_id'];
   }
 
   isValidUser = (user: User) => {

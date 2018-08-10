@@ -1,6 +1,6 @@
 import * as React from 'react';
-import LoginForm from './Form/LoginForm';
 import * as authActions from 'rootApp/actions/authActions';
+import LoginForm from './Form/LoginForm';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { StoreState, Auth } from 'rootApp/models';
