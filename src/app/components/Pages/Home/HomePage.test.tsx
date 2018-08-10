@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { shallow } from 'enzyme';
 import { HomePage, mapDispatchToProps, mapStateToProps } from './HomePage';
-import initialState from 'rootApp/reducers/initialState';
+import { StoreState, User } from '../../../models';
 
 function setup(props: any) {
   return shallow(<HomePage {...props} />);
@@ -25,15 +25,24 @@ describe('<HomePage /> component', () => {
   describe('mapStateToProps functions', () => {
     it('should return the initial state of users module', () => {
       // Arrange
-      const expectedProps = {
-        users: []
-      };
+      const state = {
+        users: {
+          data: [],
+          fetch: {
+            error: null,
+            loading: false
+          },
+          selectedUser: {}
+        }
+      } as StoreState;
 
       //Act
-      const props = mapStateToProps(Object.assign({}, initialState));
+      const props = mapStateToProps(Object.assign({}, state));
 
       // Assert
-      expect(props).toEqual(expectedProps);
+      expect(props).toEqual({
+        users: []
+      });
     });
   });
 
@@ -77,11 +86,12 @@ describe('<HomePage /> component', () => {
   });
 
   describe('setSelectedRow handler', () => {
+    
     it('should select user', () => {
       // Arrange
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const selectUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -92,19 +102,20 @@ describe('<HomePage /> component', () => {
           deleteUser: () => {}
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().setSelectedRow(user);
+      instance.setSelectedUser(user);
 
       // Assert
       expect(selectUser).toHaveBeenCalledTimes(1);
     });
 
-    it('should select user', () => {
+    it('should not call select user when selctUser is not a function', () => {
       // Arrange
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const selectUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -115,9 +126,10 @@ describe('<HomePage /> component', () => {
           deleteUser: () => {}
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().setSelectedRow(user);
+      instance.setSelectedUser(user);
 
       // Assert
       expect(selectUser).toHaveBeenCalledTimes(0);
@@ -129,8 +141,8 @@ describe('<HomePage /> component', () => {
       // Arrange
       const type = 'add';
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const createUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -141,9 +153,10 @@ describe('<HomePage /> component', () => {
           deleteUser: () => {}
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().handleUserActionType(type, user);
+      instance.handleUserActionType(type, user);
 
       // Assert
       expect(createUser).toHaveBeenCalledTimes(1);
@@ -153,8 +166,8 @@ describe('<HomePage /> component', () => {
       // Arrange
       const type = 'edit';
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const updateUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -165,9 +178,10 @@ describe('<HomePage /> component', () => {
           deleteUser: () => {}
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().handleUserActionType(type, user);
+      instance.handleUserActionType(type, user) as any;
 
       // Assert
       expect(updateUser).toHaveBeenCalledTimes(1);
@@ -177,8 +191,8 @@ describe('<HomePage /> component', () => {
       // Arrange
       const type = 'delete';
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const deleteUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -189,9 +203,10 @@ describe('<HomePage /> component', () => {
           deleteUser
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().handleUserActionType(type, user);
+      instance.handleUserActionType(type, user);
 
       // Assert
       expect(deleteUser).toHaveBeenCalledTimes(1);
@@ -201,8 +216,8 @@ describe('<HomePage /> component', () => {
       // Arrange
       const type = 'other';
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const selectUser = jest.fn();
       const createUser = jest.fn();
       const deleteUser = jest.fn();
@@ -216,9 +231,10 @@ describe('<HomePage /> component', () => {
           deleteUser
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().handleUserActionType(type, user);
+      instance.handleUserActionType(type, user);
 
       // Assert
       expect(selectUser).toHaveBeenCalledTimes(0);
@@ -229,10 +245,10 @@ describe('<HomePage /> component', () => {
 
     it('should return Add as default handler when no type is passed', () => {
       // Arrange
-      const type = undefined;
+      const type = undefined as any;
       const user = {
-        id: 'id'
-      };
+        _id: 'id'
+      } as User;
       const createUser = jest.fn();
       const wrapper = setup({
         usersActions: {
@@ -243,9 +259,10 @@ describe('<HomePage /> component', () => {
           deleteUser: () => {}
         },
       });
+      const instance = wrapper.instance() as HomePage;
 
       // Act
-      wrapper.instance().handleUserActionType(type, user);
+      instance.handleUserActionType(type, user);
 
       // Assert
       expect(createUser).toHaveBeenCalledTimes(1);

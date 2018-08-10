@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Col, Row } from 'reactstrap';
-import { User } from 'rootApp/models';
+import { StoreState, User } from 'rootApp/models';
 import ActionButtons from 'rootApp/components/Buttons/ActionButtons';
 import Header from 'rootApp/components/Layout';
 import Table from 'rootApp/components/Table';
@@ -33,7 +33,9 @@ export class HomePage extends React.Component<HomePageProps, HomePageState> {
     this.setState({
       user
     }, function () {
-      this.props.usersActions.selectUser(user);
+      if (typeof this.props.usersActions.selectUser === 'function') {
+        this.props.usersActions.selectUser(user);
+      }
     });
   }
 
@@ -84,7 +86,7 @@ export class HomePage extends React.Component<HomePageProps, HomePageState> {
   }
 }
 
-export function mapStateToProps(state: any) {
+export function mapStateToProps(state: StoreState) {
   return {
     users: state.users.data
   };

@@ -17,8 +17,8 @@ module.exports = {
   testRegex: '(app\/(.*)(spec|test).(tsx|ts))$',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   moduleNameMapper: {
+    '^rootApp/(.*)': '<rootDir>/src/app/$1',
     '\\.(css|less|scss)$': '<rootDir>/test/__mocks__/styles.js',
-    '^rootApp/(.*)': '<rootDir>/src/app/$1'
   },
   collectCoverageFrom: [
     'src/**/app/**/*.{ts,tsx}',
