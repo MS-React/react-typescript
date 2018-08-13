@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as actions from '../../actions/authActions';
 import LoginPage from '../Pages/Login';
+import HomePage from '../Pages/Home';
 import NotFoundPage from '../Pages/NotFound';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
@@ -22,6 +23,7 @@ export class Main extends React.Component<MainProps, {}> {
     return (
       <main className="app-container">
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginPage} />
           <Route component={NotFoundPage} />
         </Switch>

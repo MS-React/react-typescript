@@ -2,14 +2,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import FormInput from './FormInput';
 
-function setup(props: any) {
+function setup(props?: any) {
   return shallow(<FormInput {...props} />);
 }
 
-describe('<InputForm /> component', () => {
+describe('<FormInput /> component', () => {
   it('renders itself', () => {
     // Arrange Act
-    const wrapper = setup({});
+    const wrapper = setup();
     expect(wrapper.find('Input')).toHaveLength(1);
   });
 
@@ -59,8 +59,9 @@ describe('<InputForm /> component', () => {
     const wrapper = setup({
       required
     });
+    const instance = wrapper.instance() as FormInput;
 
     // Assert
-    expect(wrapper.instance().props.required).toEqual(required);
+    expect(instance.props.required).toEqual(required);
   });
 });

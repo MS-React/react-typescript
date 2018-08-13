@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -9,7 +10,15 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({ template: './src/static/index.html' })
+    new HtmlWebpackPlugin({ template: './src/static/index.html' }),
+    new webpack.ProvidePlugin({
+      'errorService': 'errorService'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
 
   output: {
@@ -20,7 +29,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      'rootApp': path.resolve(__dirname, 'src/app/')
+      'rootApp': path.resolve(__dirname, 'src/app/'),
+      'errorService': path.resolve(__dirname, 'src/app/utils/errorService')
     }
   },
 

@@ -1,3 +1,4 @@
+import 'rootApp/models/global';
 import * as React from 'react';
 import { render } from 'react-dom';
 import store, { history } from './store';

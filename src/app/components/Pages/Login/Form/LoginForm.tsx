@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FormInput from 'rootApp/components/Form/Input/FormInput';
+import FormInput from 'rootApp/components/Common/Form/FormInput';
 import { Alert } from 'reactstrap';
 import { Error } from 'rootApp/models';
 
@@ -10,7 +10,12 @@ interface LoginFormProps {
   onSubmit: ((username: string, password: string) => void);
 }
 
-class LoginForm extends React.Component<LoginFormProps, {}> {
+interface LoginFormState {
+  username?: string;
+  password?: string;
+}
+
+class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
 
   state = {
     username: '',

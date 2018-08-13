@@ -47,6 +47,14 @@ describe('Store', () => {
         isAuthenticated: false,
         user: null
       },
+      users: {
+        data: [],
+        fetch: {
+          error: null,
+          loading: false
+        },
+        selectedUser: {}
+      },
       routing: {
         location: null
       }

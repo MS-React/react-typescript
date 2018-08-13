@@ -17,7 +17,7 @@ describe('<Main /> component', () => {
 
     // Assert
     expect(wrapper.find('Switch')).toHaveLength(1);
-    expect(wrapper.find('Route')).toHaveLength(2);
+    expect(wrapper.find('Route')).toHaveLength(3);
   });
 
   describe('mapStateToProps functions', () => {
