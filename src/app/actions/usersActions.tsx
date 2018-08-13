@@ -2,12 +2,6 @@ import { apiService } from 'rootApp/api/ApiService';
 import { omit } from 'rootApp/utils/functions';
 import { USERS as actionTypes } from 'rootApp/actions/actionTypes';
 import {
-  createUsers,
-  deleteUsers,
-  fetchUsers,
-  updateUsers
-} from 'rootApp/services/userService';
-import {
   DEFAULT_USER_VALID_ID_PATHS,
   DEFAULT_PAGINATION_QUERY
 } from 'rootApp/constants/defaults';
