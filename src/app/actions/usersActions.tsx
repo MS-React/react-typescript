@@ -1,11 +1,6 @@
+import { apiService } from 'rootApp/api/ApiService';
 import { omit } from 'rootApp/utils/functions';
 import { USERS as actionTypes } from 'rootApp/actions/actionTypes';
-import {
-  createUsers,
-  deleteUsers,
-  fetchUsers,
-  updateUsers
-} from 'rootApp/services/userService';
 import {
   DEFAULT_USER_VALID_ID_PATHS,
   DEFAULT_PAGINATION_QUERY
@@ -61,59 +56,76 @@ export function selectUser(user: any) {
   };
 }
 
-export function deleteUser(user: any) {
+export function deleteUser(data: any) {
   return (dispatch: any) => {
     dispatch(loadingUsersBegin());
-    return deleteUsers(getUserId(user))
-      .then(() => {
-        dispatch(loadingUsersComplete());
-        dispatch(deleteUsersSuccess(user));
-        return user;
-      })
-      .catch((error: any) => handleErrors(error, dispatch));
+
+    return apiService.delete({
+      entity: 'users',
+      id: getUserId(data)
+    }).then((response : any) => {
+      dispatch(loadingUsersComplete());
+      dispatch(deleteUsersSuccess(data));
+
+      return data;
+    }).catch((error: any) => handleErrors(error, dispatch));
   };
 }
 
-export function updateUser(user: any) {
+export function updateUser(data: any) {
   return (dispatch: any) => {
     dispatch(loadingUsersBegin());
-    return updateUsers(getUserId(user), omit(user, DEFAULT_USER_VALID_ID_PATHS))
-      .then(({ data } : any) => {
-        dispatch(loadingUsersComplete());
-        dispatch(updateUsersSuccess(data));
-        return data;
-      })
-      .catch((error) => handleErrors(error, dispatch));
+
+    return apiService.update({
+      entity: 'users',
+      id: getUserId(data),
+      data: omit(data, DEFAULT_USER_VALID_ID_PATHS),
+    }).then((response : any) => {
+      dispatch(loadingUsersComplete());
+      dispatch(updateUsersSuccess(response));
+
+      return response;
+    });
   };
 }
 
-export function createUser(userData: any) {
+export function createUser(data: any) {
   return (dispatch: any) => {
     dispatch(loadingUsersBegin());
-    return createUsers(omit(userData, DEFAULT_USER_VALID_ID_PATHS))
-      .then(({ data } : any) => {
-        dispatch(loadingUsersComplete());
-        dispatch(createUsersSuccess(data));
-        return data;
-      })
-      .catch((error) => handleErrors(error, dispatch));
+
+    return apiService.create({
+      entity: 'users',
+      data
+    }).then((response : any) => {
+      dispatch(loadingUsersComplete());
+      dispatch(createUsersSuccess(response));
+    
+      return data;
+    }).catch((error: any) => handleErrors(error, dispatch));
   };
 }
 
 export function getUsers(queryParams = DEFAULT_PAGINATION_QUERY) {
   return (dispatch: any) => {
     dispatch(loadingUsersBegin());
-    return fetchUsers(queryParams)
-      .then(({ data } : any) => {
-        const usersPayload = {
-          ...omit(data, ['docs']),
-          users: data.docs
-        };
-        dispatch(loadingUsersComplete());
-        dispatch(getUsersSuccess(usersPayload));
-        return usersPayload;
-      })
-      .catch((error) => handleErrors(error, dispatch));
+
+    return apiService.getAll({
+      entity: 'users',
+      params: {
+        page: 1,
+        limit: 100
+      }
+    }).then((response : any) => {
+      const usersPayload = {
+        ...omit(response, ['docs']),
+        users: response.docs
+      };
+
+      dispatch(loadingUsersComplete());
+      dispatch(getUsersSuccess(usersPayload));
+      
+      return usersPayload;
+    }).catch((error: any) => handleErrors(error, dispatch));
   };
 }
 
